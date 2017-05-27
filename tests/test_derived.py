@@ -60,6 +60,7 @@ class TestDerived(unittest.TestCase):
                 pyinstance.PyInstance.pyinstances[k]['instance'],
                 DerivedInstance
             )
+            v.__del__()
 
     def test_derived_repeats(self):
         session_names = [
@@ -75,7 +76,7 @@ class TestDerived(unittest.TestCase):
             id(v)
             for k, v in six.iteritems(sessions)
         ]
-        
+
         self.assertEqual(
             len(session_names),
             len(ids)
