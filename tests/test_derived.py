@@ -75,7 +75,7 @@ class TestDerived(unittest.TestCase):
             id(v)
             for k, v in six.iteritems(sessions)
         ]
-        
+
         self.assertEqual(
             len(session_names),
             len(ids)

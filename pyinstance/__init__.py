@@ -66,9 +66,12 @@ class PyInstance(object):
         if self.__session in PyInstance.pyinstances:
             # Decrement the reference counter
             PyInstance.pyinstances[self.__session][PyInstance.__COUNTER] = (
-                PyInstance.pyinstances[self.__session][PyInstance.__COUNTER] - 1
+                PyInstance.pyinstances[
+                    self.__session][PyInstance.__COUNTER] - 1
             )
 
             # If zero, clear out the session from the instances dict
-            if not PyInstance.pyinstances[self.__session][PyInstance.__COUNTER]:
+            if not (
+                PyInstance.pyinstances[self.__session][PyInstance.__COUNTER]
+            ):
                 del PyInstance.pyinstances[self.__session]
