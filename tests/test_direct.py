@@ -52,6 +52,7 @@ class TestDirect(unittest.TestCase):
                 pyinstance.PyInstance.pyinstances[k]['instance'],
                 pyinstance.PyInstance
             )
+            v.__del__()
 
     def test_direct_repeats(self):
         session_names = [
@@ -89,3 +90,6 @@ class TestDirect(unittest.TestCase):
                 pyinstance.PyInstance.pyinstances[s]['instance'],
                 pyinstance.PyInstance
             )
+
+        for k, v in six.iteritems(sessions):
+            v.__del__()

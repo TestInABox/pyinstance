@@ -60,6 +60,7 @@ class TestDerived(unittest.TestCase):
                 pyinstance.PyInstance.pyinstances[k]['instance'],
                 DerivedInstance
             )
+            v.__del__()
 
     def test_derived_repeats(self):
         session_names = [
