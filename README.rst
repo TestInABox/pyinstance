@@ -1,6 +1,9 @@
 **********
 PyInstance
 **********
+.. image:: https://badges.gitter.im/TestInABox/community.svg
+  :target: https://gitter.im/TestInABox/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+  :alt: Gitter
 
 Python Object Instance Management
 
