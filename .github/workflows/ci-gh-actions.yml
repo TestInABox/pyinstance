@@ -1,12 +1,13 @@
 name: PyInstance CI
 
-on: [ push ]
+on: [ push, pull_request ]
 
 jobs:
 
     build: 
         runs-on: ubuntu-latest
         strategy:
+            fast-fail: true
             matrix:
                 python-version: [3.6, 3.7, 3.8, 3.9]
         steps:
@@ -15,6 +16,8 @@ jobs:
               uses: actions/setup-python@v2
               with:
                 python-version: ${{ matrix.python-version }}
+            - run: git checkout HEAD^2
+              if: ${{ github.event_name }} == 'pull_request'
             - name: Install Dependencies 
               run: pip install tox setuptools virtualenv coveralls --upgrade
             - name: Run Tox
