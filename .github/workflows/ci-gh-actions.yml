@@ -16,12 +16,15 @@ jobs:
                 python-version: [3.6, 3.7, 3.8, 3.9]
         steps:
             - uses: actions/checkout@v2
+              with:
+               ref: ${{ github.event.pull_request.head.sha }}
+              if: ${{ github.event_name }} == 'pull_request'
+            - uses: actions/checkout@v2
+              if: ${{ github.event_name }} != 'pull_request'
             - name: Setup Python ${{ matrix.python-version }}
               uses: actions/setup-python@v2
               with:
                 python-version: ${{ matrix.python-version }}
-            - run: git checkout HEAD^2
-              if: ${{ github.event_name }} == 'pull_request'
             - name: Install Dependencies 
               run: pip install tox setuptools virtualenv coveralls --upgrade
             - name: Run Tox
